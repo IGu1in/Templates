@@ -25,8 +25,8 @@ namespace ControlWork1
 			txt.Print(new PrinterSpecial());
 			Console.WriteLine();
 
-			var printDelegate = new PrinterDelegate();
-			printDelegate.Print(txt);
+			var pd = new PrinterDefault();
+			pd.Print(txt);
 		}
 	}
 }

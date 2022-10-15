@@ -44,12 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPrinterDelegate.cs" />
-    <Compile Include="PrinterDelegate.cs" />
+    <Compile Include="PrinterDefault.cs" />
     <Compile Include="PrinterSpecial.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="IPrintable.cs" />
     <Compile Include="IPrinter.cs" />
-    <Compile Include="PrinterDefault.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sign.cs" />
