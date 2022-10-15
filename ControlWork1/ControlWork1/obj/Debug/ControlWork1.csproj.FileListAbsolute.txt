@@ -1,0 +1,8 @@
+D:\UNN\templates\ControlWork1\ControlWork1\bin\Debug\ControlWork1.exe.config
+D:\UNN\templates\ControlWork1\ControlWork1\bin\Debug\ControlWork1.exe
+D:\UNN\templates\ControlWork1\ControlWork1\bin\Debug\ControlWork1.pdb
+D:\UNN\templates\ControlWork1\ControlWork1\obj\Debug\ControlWork1.csproj.AssemblyReference.cache
+D:\UNN\templates\ControlWork1\ControlWork1\obj\Debug\ControlWork1.csproj.SuggestedBindingRedirects.cache
+D:\UNN\templates\ControlWork1\ControlWork1\obj\Debug\ControlWork1.csproj.CoreCompileInputs.cache
+D:\UNN\templates\ControlWork1\ControlWork1\obj\Debug\ControlWork1.exe
+D:\UNN\templates\ControlWork1\ControlWork1\obj\Debug\ControlWork1.pdb
