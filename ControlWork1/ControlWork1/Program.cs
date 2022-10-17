@@ -27,6 +27,8 @@ namespace ControlWork1
 
 			var pd = new PrinterDefault();
 			pd.Print(txt);
+
+			Console.ReadLine();
 		}
 	}
 }

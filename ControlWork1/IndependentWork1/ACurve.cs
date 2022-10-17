@@ -2,8 +2,8 @@
 {
 	public abstract class ACurve : ICurve
 	{
-		protected IPoint _a;
-		protected IPoint _b;
+		private IPoint _a;
+		private IPoint _b;
 
 		public ACurve(IPoint a, IPoint b)
 		{

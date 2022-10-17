@@ -47,11 +47,11 @@ namespace IndependentWork1
 			vl.Draw(can);
 			grid1.Children.Add(can);
 
-			//var vl = new VisualLine(p1, p2);
-			//vl.Draw(can);
-			//grid1.Children.Add(can);
+            //var vl = new VisualLine(p1, p2);
+            //vl.Draw(can);
+            //grid1.Children.Add(can);
 
-			Ellipse elipse = new Ellipse();
+            Ellipse elipse = new Ellipse();
 
 			elipse.Width = 4;
 			elipse.Height = 4;
