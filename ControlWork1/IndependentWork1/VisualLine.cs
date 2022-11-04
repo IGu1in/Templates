@@ -7,7 +7,7 @@ namespace IndependentWork1
 {
 	public class VisualLine : VisualCurve
 	{
-		public VisualLine(Line curve) :base (curve)
+		public VisualLine(Line curve) : base (curve)
 		{
 
 		}

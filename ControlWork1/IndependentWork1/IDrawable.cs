@@ -1,9 +1,10 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections.Generic;
+using System.Windows.Controls;
 
 namespace IndependentWork1
 {
 	public interface IDrawable
 	{
-		void Draw(Canvas canvas);
+		void Draw(Canvas canvas, List<IPoint> points);
 	}
 }

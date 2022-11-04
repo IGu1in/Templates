@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IndependentWork1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid x:Name="grid1">
-
-    </Grid>
+        Title="MainWindow" Height="600" Width="800">
+	<Grid x:Name="grid1">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="491*"></RowDefinition>
+			<RowDefinition Height="93*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Column="0" Grid.Row="0" Name="sp">
+			<Canvas x:Name="green" Width="380" Height="440" Background="AliceBlue">
+			</Canvas>
+			<Button x:Name="saveGreen" Content="Сохранить" Width="100" Height="40" Click="SaveGreenClick"/>
+		</StackPanel>
+		<StackPanel Grid.Column="1" Grid.Row="0" Name="sp2">
+			<Canvas x:Name="black" Width="380" Height="440" Background="AliceBlue">
+			</Canvas>
+			<Button x:Name="saveBlack" Content="Сохранить" Width="100" Height="40" Click="SaveBlackClick"/>
+		</StackPanel>
+		<Button Grid.Column="0" x:Name="generate" Content="Сгенерировать" Click="GenerateClick" Margin="114,10,142,27" Grid.Row="1"/>
+	</Grid>
 </Window>
