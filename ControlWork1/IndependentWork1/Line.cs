@@ -10,8 +10,8 @@
 		{
 			var point = new Point();
 
-			var x = (1-t)*_a.GetX() + t*_b.GetX();
-			var y = (1-t)*_a.GetY() + t*_b.GetY();
+			var x = (1-t)*A.GetX() + t*B.GetX();
+			var y = (1-t)*A.GetY() + t*B.GetY();
 
 			point.SetX(x);
 			point.SetY(y);

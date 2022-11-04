@@ -42,16 +42,17 @@ namespace IndependentWork1
 			p4.SetX(50);
 			p4.SetY(420);
 
+			//var bez = new Bezier(p1, p2, p3, p4);
+			//var vl = new VisualBezier(bez);
+			//vl.Draw(can);
+			//grid1.Children.Add(can);
 
-			var vl = new VisualBezier(p1, p2, p3, p4);
+			var line = new Line(p1, p2);
+			var vl = new VisualLine(line);
 			vl.Draw(can);
 			grid1.Children.Add(can);
 
-            //var vl = new VisualLine(p1, p2);
-            //vl.Draw(can);
-            //grid1.Children.Add(can);
-
-            Ellipse elipse = new Ellipse();
+			Ellipse elipse = new Ellipse();
 
 			elipse.Width = 4;
 			elipse.Height = 4;
@@ -72,25 +73,25 @@ namespace IndependentWork1
 			elipse2.Margin = new Thickness(p2.GetX(), p2.GetY(), 0, 0);
 			can.Children.Add(elipse2);
 
-			Ellipse elipse3 = new Ellipse();
+			//Ellipse elipse3 = new Ellipse();
 
-			elipse3.Width = 4;
-			elipse3.Height = 4;
+			//elipse3.Width = 4;
+			//elipse3.Height = 4;
 
-			elipse3.StrokeThickness = 2;
-			elipse3.Stroke = Brushes.Blue;
-			elipse3.Margin = new Thickness(p3.GetX(), p3.GetY(), 0, 0);
-			can.Children.Add(elipse3);
+			//elipse3.StrokeThickness = 2;
+			//elipse3.Stroke = Brushes.Blue;
+			//elipse3.Margin = new Thickness(p3.GetX(), p3.GetY(), 0, 0);
+			//can.Children.Add(elipse3);
 
-			Ellipse elipse4 = new Ellipse();
+			//Ellipse elipse4 = new Ellipse();
 
-			elipse4.Width = 4;
-			elipse4.Height = 4;
+			//elipse4.Width = 4;
+			//elipse4.Height = 4;
 
-			elipse4.StrokeThickness = 2;
-			elipse4.Stroke = Brushes.Blue;
-			elipse4.Margin = new Thickness(p4.GetX(), p4.GetY(), 0, 0);
-			can.Children.Add(elipse4);
+			//elipse4.StrokeThickness = 2;
+			//elipse4.Stroke = Brushes.Blue;
+			//elipse4.Margin = new Thickness(p4.GetX(), p4.GetY(), 0, 0);
+			//can.Children.Add(elipse4);
 		}
 	}
 }

@@ -2,13 +2,13 @@
 {
 	public abstract class ACurve : ICurve
 	{
-		private IPoint _a;
-		private IPoint _b;
+		public IPoint A { private set; get; }
+		public IPoint B { private set; get; }
 
 		public ACurve(IPoint a, IPoint b)
 		{
-			_a = a;
-			_b = b;
+			A = a;
+			B = b;
 		}
 
 		public abstract IPoint GetPoint(double t);

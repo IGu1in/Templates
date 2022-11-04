@@ -21,10 +21,10 @@ namespace IndependentWork1
 		{
 			var point = new Point();
 
-			var x = Math.Pow((1 - t), 3) * _a.GetX() + 3 * t * Math.Pow((1 - t), 2) * _c.GetX()
-				+ 3 * t * t * (1 - t) * _d.GetX() + Math.Pow(t, 3) * _b.GetX();
-			var y = Math.Pow((1 - t), 3) * _a.GetY() + 3 * t * Math.Pow((1 - t), 2) * _c.GetY()
-				+ 3 * t * t * (1 - t) * _d.GetY() + Math.Pow(t, 3) * _b.GetY();
+			var x = Math.Pow((1 - t), 3) * A.GetX() + 3 * t * Math.Pow((1 - t), 2) * _c.GetX()
+				+ 3 * t * t * (1 - t) * _d.GetX() + Math.Pow(t, 3) * B.GetX();
+			var y = Math.Pow((1 - t), 3) * A.GetY() + 3 * t * Math.Pow((1 - t), 2) * _c.GetY()
+				+ 3 * t * t * (1 - t) * _d.GetY() + Math.Pow(t, 3) * B.GetY();
 
 			point.SetX(x);
 			point.SetY(y);
