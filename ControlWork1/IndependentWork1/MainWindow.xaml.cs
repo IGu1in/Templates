@@ -31,7 +31,7 @@ namespace IndependentWork1
 		private void SaveBlackClick(object sender, RoutedEventArgs e)
 		{
 			FileStream fs = File.Open(@"D:\blackCanvas.xaml", FileMode.Create);
-			XamlWriter.Save(green, fs);
+			XamlWriter.Save(black, fs);
 			fs.Close();
 		}
 
