@@ -8,18 +8,19 @@ namespace IndependentWork1
 {
 	public class VisualCurve : ICurve
 	{
+		public Shape FirstPoint { get; }
+		public Shape LastPoint { get; }
+		public IEnumerable<Shape> Lines { get; }
 		private ICurve _curve;
-		public IDrawable Drawable { get; set; }
 
 		public VisualCurve(ICurve curve)
         {
 			_curve = curve;
-			Drawable = new DrawGreenColor();
         }
 		
-		public void Draw(Canvas canvas)
+		public void Draw(Canvas canvas, IDrawable drawable)
         {
-			if (Drawable is null)
+			if (drawable is null)
 			{
 				return;
 			}
@@ -33,7 +34,7 @@ namespace IndependentWork1
 				points.Add(el);
 			}
 
-			Drawable.Draw(canvas, points);
+			drawable.Draw(canvas, points);
 		}
 
 		public IPoint GetPoint(double t)

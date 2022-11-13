@@ -62,15 +62,11 @@ namespace IndependentWork1
 			var line = new Line(p1, p2);
 			var bez = new Bezier(p1, p2, p3, p4);
 			var v2 = new VisualBezier(bez);
-			v2.Drawable = drawBlack;
 			var v1 = new VisualLine(line);
-			v1.Drawable = drawBlack;
-			v2.Draw(black);
-			v1.Draw(black);
-			v2.Drawable = drawGreen;
-			v1.Drawable = drawGreen;
-			v2.Draw(green);
-			v1.Draw(green);
+			v2.Draw(black, drawBlack);
+			v1.Draw(black, drawBlack);
+			v2.Draw(green, drawGreen);
+			v1.Draw(green, drawGreen);
 		}
 	}
 }
