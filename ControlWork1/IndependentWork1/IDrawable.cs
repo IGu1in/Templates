@@ -5,6 +5,6 @@ namespace IndependentWork1
 {
 	public interface IDrawable
 	{
-		void Draw(Canvas canvas, List<IPoint> points);
+		void Draw(Canvas canvas, IEnumerable<IPoint> points);
 	}
 }
