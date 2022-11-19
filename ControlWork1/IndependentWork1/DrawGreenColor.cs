@@ -72,5 +72,10 @@ namespace IndependentWork1
 
 			CustomShapes = customShapes;
 		}
+
+		public void DrawCentralPoint(Ellipse el)
+		{
+			_canvas.Children.Add(el);
+		}
 	}
 }

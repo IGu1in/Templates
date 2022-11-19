@@ -8,5 +8,7 @@ namespace IndependentWork1
 	{
 		public IEnumerable<Shape> CustomShapes { get; }
 		void Draw(IEnumerable<System.Windows.Shapes.Line> lines);
+
+		void DrawCentralPoint(Ellipse el);
 	}
 }

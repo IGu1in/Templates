@@ -1,11 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace IndependentWork1
 {
 	public class Canva : ICanvas
 	{
+		public Ellipse GetCentralPoint(IPoint centralPoint)
+		{
+			Ellipse elipse = new Ellipse();
+			elipse.Width = 4;
+			elipse.Height = 4;
+			elipse.StrokeThickness = 2;
+			elipse.Stroke = Brushes.Red;
+			elipse.Margin = new Thickness(centralPoint.GetX() - elipse.Width / 2,
+				centralPoint.GetY() - elipse.Height / 2, 0, 0);
+
+			return elipse;
+		}
+
 		public IEnumerable<System.Windows.Shapes.Line> GetLines(IEnumerable<IPoint> points)
 		{
 			var linesList = new List<System.Windows.Shapes.Line>();

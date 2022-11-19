@@ -1,9 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace IndependentWork1
 {
@@ -11,12 +7,18 @@ namespace IndependentWork1
 	{
 		public List<System.Windows.Shapes.Line> Lines { get; private set; }
 		private ICurve _curve;
+		public ICounter Counter { get; set; } = new LengthCounter();
 
 		public VisualCurve(ICurve curve)
         {
 			_curve = curve;
         }
-		
+
+		public double? GetValue(double condition)
+		{
+			return _curve.GetValue(condition);
+		}
+
 		public void Draw(ICanvas canvas, IDrawable drawable)
         {
 			if (drawable is null)
@@ -36,6 +38,26 @@ namespace IndependentWork1
 			Lines = GetLines(points, canvas);
 
 			drawable.Draw(Lines);
+
+			_curve.Counter = new LengthCounter();
+			var length = GetValue(1);
+
+			if (length is null)
+			{
+				return;
+			}
+
+			_curve.Counter = new ParamCounter();
+			var centralParam = GetValue((double)(length / 2));
+
+			if (centralParam is null)
+			{
+				return;
+			}
+
+			var centralPoint = _curve.GetPoint((double)centralParam);
+			
+			drawable.DrawCentralPoint(canvas.GetCentralPoint(centralPoint));
 		}
 
 		public IPoint GetPoint(double t)
