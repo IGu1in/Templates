@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -8,9 +9,7 @@ namespace IndependentWork1
 {
 	public class VisualCurve : ICurve
 	{
-		public Shape FirstPoint { get; }
-		public Shape LastPoint { get; }
-		public IEnumerable<Shape> Lines { get; }
+		public List<System.Windows.Shapes.Line> Lines { get; private set; }
 		private ICurve _curve;
 
 		public VisualCurve(ICurve curve)
@@ -18,7 +17,7 @@ namespace IndependentWork1
 			_curve = curve;
         }
 		
-		public void Draw(Canvas canvas, IDrawable drawable)
+		public void Draw(ICanvas canvas, IDrawable drawable)
         {
 			if (drawable is null)
 			{
@@ -34,12 +33,19 @@ namespace IndependentWork1
 				points.Add(el);
 			}
 
-			drawable.Draw(canvas, points);
+			Lines = GetLines(points, canvas);
+
+			drawable.Draw(Lines);
 		}
 
 		public IPoint GetPoint(double t)
         {
 			return _curve.GetPoint(t);
         }
+
+		private List<System.Windows.Shapes.Line> GetLines (IEnumerable<IPoint> points, ICanvas canva)
+		{
+			return canva.GetLines(points).ToList();
+		}
 	}
 }
