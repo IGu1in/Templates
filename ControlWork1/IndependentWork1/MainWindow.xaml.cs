@@ -99,9 +99,11 @@ namespace IndependentWork1
 			_bezier = bez;
 			var composite = new Composite();
 			var line2 = new Line(p6, p7);
+			var bez2 = new Bezier(p7, p2, p3, p4);
 			composite.Add(line);
 			composite.Add(bez);
 			composite.Add(line2);
+			composite.Add(bez2);
 			_composite = composite;
 			var visualComposite = new VisualCurve(composite);
 			var listBlack = new List<IDrawable>();
@@ -173,16 +175,18 @@ namespace IndependentWork1
 
 		private void CountBazeCurve(object sender, RoutedEventArgs e)
 		{
-			var fragmentFirst = new Fragment(_bezier, 0.5, 1);
-			var clearCurve1 = new VisualCurve(fragmentFirst);
-			var moving = new MoveTo(fragmentFirst, _moveFragment.GetPoint(1));
-			var v1 = new VisualCurve(moving);
-			var listBlack = new List<IDrawable>();
-			var listGreen = new List<IDrawable>();
-			v1.Draw(_canva, _drawBlack, false, moving.HasFirstPoint, moving.HasLastPoint);
-			listBlack.Add(_drawBlack);
-			v1.Draw(_canva, _drawGreen, false, moving.HasFirstPoint, moving.HasLastPoint);
-			listGreen.Add(_drawGreen);
+			ConcreteIterator iterator = _composite.CreateIterator();
+			var count = 0;
+
+			for (var curve = iterator.First(); !iterator.IsCompleted; curve = iterator.Next())
+			{
+				if (curve is Bezier || curve is Line)
+				{
+					count++;
+				}
+			}
+
+			MessageBox.Show(count.ToString());
 		}
 	}
 }
