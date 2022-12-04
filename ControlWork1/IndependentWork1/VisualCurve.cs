@@ -22,33 +22,14 @@ namespace IndependentWork1
 			return _curve.GetValue(condition);
 		}
 
-		public void ClearFragment(ICanvas canvas, IDrawable drawable)
+		public void ClearStartPoint(IDrawable drawable)
 		{
-			if (drawable is null)
-			{
-				return;
-			}
+			drawable.ClearStartPoint();
+		}
 
-			double details = 10;
-			var points = new List<IPoint>();
-
-			for (double t = 0; t <= 1; t += 1.0 / details)
-			{
-				t = Math.Round(t, 5);
-				var el = GetPoint(t);
-				points.Add(el);
-			}
-
-			Lines = GetLines(points, canvas);
-
-			if (_curve is Fragment fragment)
-			{
-				drawable.Clear(Lines, fragment.HasFirstPoint, fragment.HasLastPoint);
-			}
-			else
-			{
-				drawable.Clear(Lines);
-			}
+		public void ClearEndPoint(IDrawable drawable)
+		{
+			drawable.ClearEndPoint();
 		}
 
 		public void Draw(ICanvas canvas, IDrawable drawable, bool hasCentralPoint, bool hasStartPoint, bool hasLastPoint)
@@ -68,12 +49,13 @@ namespace IndependentWork1
 			}
 
 			Lines = GetLines(points, canvas);
-			drawable.DrawLine(Lines);
 
 			if (hasStartPoint)
 			{
 				drawable.DrawStartPoint(Lines.FirstOrDefault().X1, Lines.FirstOrDefault().Y1);
 			}
+
+			drawable.DrawLine(Lines);			
 
 			if (hasLastPoint)
 			{

@@ -52,50 +52,27 @@ namespace IndependentWork1
 			_canvas.Children.Add(el);
 		}
 
-		public void Clear(IEnumerable<System.Windows.Shapes.Line> lines, bool hasFirstPoint = true, bool hasLastPoint = true)
+		public void ClearStartPoint()
 		{
-			if (lines is null)
+			var start = _canvas.Children.OfType<Shape>()
+				.Where(c => "start".Equals(c.Tag))
+				.FirstOrDefault();
+
+			if (start is not null)
 			{
-				return;
+				_canvas.Children.Remove(start);
 			}
+		}
 
-			List<System.Windows.Shapes.Line> linesList = lines.ToList();
+		public void ClearEndPoint()
+		{
+			var end = _canvas.Children.OfType<Shape>()
+				.Where(c => "end".Equals(c.Tag))
+				.FirstOrDefault();
 
-			if (linesList.Count == 0)
+			if (end is not null)
 			{
-				return;
-			}
-
-			if (hasFirstPoint)
-			{
-				Rectangle rect = new Rectangle();
-				rect.Width = 4;
-				rect.Height = 4;
-				rect.StrokeThickness = 5;
-				rect.Stroke = Brushes.AliceBlue;
-				rect.Margin = new Thickness(linesList.FirstOrDefault().X1 - rect.Width / 2,
-					linesList.FirstOrDefault().Y1 - rect.Height / 2, 0, 0);
-				_canvas.Children.Add(rect);
-			}
-
-			if (hasLastPoint)
-			{
-				Rectangle rect2 = new Rectangle();
-				rect2.Width = 4;
-				rect2.Height = 4;
-				rect2.Stroke = Brushes.AliceBlue;
-				rect2.StrokeThickness = 5;
-				rect2.Margin = new Thickness(linesList.LastOrDefault().X2 - rect2.Width / 2,
-					linesList.LastOrDefault().Y2 - rect2.Height / 2, 0, 0);
-				_canvas.Children.Add(rect2);
-			}
-
-			foreach (var line in linesList)
-			{
-				line.Stroke = Brushes.AliceBlue;
-				line.StrokeThickness = 5;
-				line.StrokeDashArray = new DoubleCollection(new double[] { 2, 3 });
-				_canvas.Children.Add(line);
+				_canvas.Children.Remove(end);
 			}
 		}
 
@@ -105,10 +82,11 @@ namespace IndependentWork1
 			rect.Width = 4;
 			rect.Height = 4;
 			rect.StrokeThickness = 5;
-			rect.Stroke = Brushes.AliceBlue;
+			rect.Stroke = Brushes.Black;
 			rect.Margin = new Thickness(x - rect.Width / 2,
 				y - rect.Height / 2, 0, 0);
 			_customShapes.Add(rect);
+			rect.Tag = "start";
 			_canvas.Children.Add(rect);
 		}
 
@@ -117,11 +95,12 @@ namespace IndependentWork1
 			Rectangle rect = new Rectangle();
 			rect.Width = 4;
 			rect.Height = 4;
-			rect.Stroke = Brushes.AliceBlue;
+			rect.Stroke = Brushes.Black;
 			rect.StrokeThickness = 5;
 			rect.Margin = new Thickness(x - rect.Width / 2,
 				y - rect.Height / 2, 0, 0);
 			_customShapes.Add(rect);
+			rect.Tag = "end";
 			_canvas.Children.Add(rect);
 		}
 	}

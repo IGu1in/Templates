@@ -89,18 +89,18 @@ namespace IndependentWork1
 			_line = line;
 			var bez = new Bezier(p1, p2, p3, p4);
 			_bezier = bez;
-			var v2 = new VisualCurve(bez);
-			var v1 = new VisualCurve(line);
+			var visualBezier = new VisualCurve(bez);
+			var visualLine = new VisualCurve(line);
 
 			var listBlack = new List<IDrawable>();
 			var listGreen = new List<IDrawable>();
-			v2.Draw(_canva, _drawBlack, true, true, true);
+			visualBezier.Draw(_canva, _drawBlack, true, true, true);
 			listBlack.Add(_drawBlack);
-			v1.Draw(_canva, _drawBlack, true, true, true);
+			visualLine.Draw(_canva, _drawBlack, true, true, true);
 			listBlack.Add(_drawBlack);
-			v2.Draw(_canva, _drawGreen, true, true, true);
+			visualBezier.Draw(_canva, _drawGreen, true, true, true);
 			listGreen.Add(_drawGreen);
-			v1.Draw(_canva, _drawGreen, true, true, true);
+			visualLine.Draw(_canva, _drawGreen, true, true, true);
 			listGreen.Add(_drawGreen);
 			_drawables.Add("black", listBlack);
 			_drawables.Add("green", listGreen);
@@ -110,22 +110,26 @@ namespace IndependentWork1
 		{
 			var fragmentFirst = new Fragment(_line, 0, 0);
 			var fragmentLast = new Fragment(_line, 1, 1);
+
 			var clearCurve1 = new VisualCurve(fragmentFirst);
 			var clearCurve2 = new VisualCurve(fragmentLast);
-			clearCurve1.ClearFragment(_canva, _drawBlack);
-			clearCurve1.ClearFragment(_canva, _drawGreen);
-			clearCurve2.ClearFragment(_canva, _drawGreen);
-			clearCurve2.ClearFragment(_canva, _drawBlack);
-			var v1 = new VisualCurve(new MoveTo(fragmentFirst, _bezier.GetPoint(1)));
-			var v2 = new VisualCurve(new MoveTo(fragmentLast, _bezier.GetPoint(0)));
-			var listBlack = new List<IDrawable>();
-			var listGreen = new List<IDrawable>();
-			v1.Draw(_canva, _drawBlack, false, fragmentFirst.HasFirstPoint, fragmentFirst.HasLastPoint);
-			v2.Draw(_canva, _drawBlack, false, fragmentLast.HasFirstPoint, fragmentLast.HasLastPoint);
-			listBlack.Add(_drawBlack);
-			v1.Draw(_canva, _drawGreen, false, fragmentFirst.HasFirstPoint, fragmentFirst.HasLastPoint);
-			v2.Draw(_canva, _drawGreen, false, fragmentLast.HasFirstPoint, fragmentLast.HasLastPoint);
-			listGreen.Add(_drawGreen);
+			clearCurve1.ClearStartPoint(_drawBlack);
+			clearCurve1.ClearEndPoint(_drawBlack);
+			clearCurve1.ClearStartPoint(_drawGreen);
+			clearCurve1.ClearEndPoint(_drawGreen);
+			clearCurve2.ClearStartPoint(_drawBlack);
+			clearCurve2.ClearEndPoint(_drawBlack);
+			clearCurve2.ClearStartPoint(_drawGreen);
+			clearCurve2.ClearEndPoint(_drawGreen);
+
+			var visualFirst = new VisualCurve(new MoveTo(fragmentFirst, _line.GetPoint(1)));
+			var visualLast = new VisualCurve(new MoveTo(fragmentLast, _line.GetPoint(0)));
+
+			visualFirst.Draw(_canva, _drawBlack, false, fragmentFirst.HasFirstPoint, fragmentFirst.HasLastPoint);
+			visualLast.Draw(_canva, _drawBlack, false, fragmentLast.HasFirstPoint, fragmentLast.HasLastPoint);
+
+			visualFirst.Draw(_canva, _drawGreen, false, fragmentFirst.HasFirstPoint, fragmentFirst.HasLastPoint);
+			visualLast.Draw(_canva, _drawGreen, false, fragmentLast.HasFirstPoint, fragmentLast.HasLastPoint);
 		}
 
 		private void MoveFragmentClick(object sender, RoutedEventArgs e)
@@ -134,9 +138,6 @@ namespace IndependentWork1
 			point.SetX(50);
 			point.SetY(50);
 			var fragmentFirst = new Fragment(_line, 0, 0.5);
-			var clearCurve1 = new VisualCurve(fragmentFirst);
-			clearCurve1.ClearFragment(_canva, _drawBlack);
-			clearCurve1.ClearFragment(_canva, _drawGreen);
 			var moving = new MoveTo(fragmentFirst, point);
 			var v1 = new VisualCurve(moving);
 			var listBlack = new List<IDrawable>();
@@ -152,8 +153,6 @@ namespace IndependentWork1
 		{
 			var fragmentFirst = new Fragment(_bezier, 0.5, 1);
 			var clearCurve1 = new VisualCurve(fragmentFirst);
-			clearCurve1.ClearFragment(_canva, _drawBlack);
-			clearCurve1.ClearFragment(_canva, _drawGreen);
 			var moving = new MoveTo(fragmentFirst, _moveFragment.GetPoint(1));
 			var v1 = new VisualCurve(moving);
 			var listBlack = new List<IDrawable>();
