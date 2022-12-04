@@ -39,7 +39,7 @@ namespace IndependentWork1
 				return;
 			}
 
-			double details = 10;
+			double details = 1000;
 			var points = new List<IPoint>();
 
 			for (double t = 0; t <= 1; t += 1 / details)

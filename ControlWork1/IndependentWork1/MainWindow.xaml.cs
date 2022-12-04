@@ -89,19 +89,26 @@ namespace IndependentWork1
 			_line = line;
 			var bez = new Bezier(p1, p2, p3, p4);
 			_bezier = bez;
-			var visualBezier = new VisualCurve(bez);
-			var visualLine = new VisualCurve(line);
-
+			//var visualBezier = new VisualCurve(bez);
+			//var visualLine = new VisualCurve(line);
+			var composite = new Composite();
+			composite.Add(line);
+			composite.Add(bez);
+			var visualComposite = new VisualCurve(composite);
 			var listBlack = new List<IDrawable>();
 			var listGreen = new List<IDrawable>();
-			visualBezier.Draw(_canva, _drawBlack, true, true, true);
-			listBlack.Add(_drawBlack);
-			visualLine.Draw(_canva, _drawBlack, true, true, true);
-			listBlack.Add(_drawBlack);
-			visualBezier.Draw(_canva, _drawGreen, true, true, true);
+			visualComposite.Draw(_canva, _drawGreen, true, true, true);
 			listGreen.Add(_drawGreen);
-			visualLine.Draw(_canva, _drawGreen, true, true, true);
-			listGreen.Add(_drawGreen);
+			visualComposite.Draw(_canva, _drawBlack, true, true, true);
+			listBlack.Add(_drawBlack);
+			//visualBezier.Draw(_canva, _drawBlack, true, true, true);
+			//listBlack.Add(_drawBlack);
+			//visualLine.Draw(_canva, _drawBlack, true, true, true);
+			//listBlack.Add(_drawBlack);
+			//visualBezier.Draw(_canva, _drawGreen, true, true, true);
+			//listGreen.Add(_drawGreen);
+			//visualLine.Draw(_canva, _drawGreen, true, true, true);
+			//listGreen.Add(_drawGreen);
 			_drawables.Add("black", listBlack);
 			_drawables.Add("green", listGreen);
 		}

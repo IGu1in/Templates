@@ -37,5 +37,15 @@ namespace IndependentWork1
 
 			return null;
 		}
+
+		public virtual void Add(ICurve curve)
+		{
+			throw new NotImplementedException();
+		}
+
+		public virtual void Remove(ICurve curve)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
