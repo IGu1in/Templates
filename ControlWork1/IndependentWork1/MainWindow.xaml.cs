@@ -94,13 +94,13 @@ namespace IndependentWork1
 
 			var listBlack = new List<IDrawable>();
 			var listGreen = new List<IDrawable>();
-			v2.Draw(_canva, _drawBlack);
+			v2.Draw(_canva, _drawBlack, true, true, true);
 			listBlack.Add(_drawBlack);
-			v1.Draw(_canva, _drawBlack);
+			v1.Draw(_canva, _drawBlack, true, true, true);
 			listBlack.Add(_drawBlack);
-			v2.Draw(_canva, _drawGreen);
+			v2.Draw(_canva, _drawGreen, true, true, true);
 			listGreen.Add(_drawGreen);
-			v1.Draw(_canva, _drawGreen);
+			v1.Draw(_canva, _drawGreen, true, true, true);
 			listGreen.Add(_drawGreen);
 			_drawables.Add("black", listBlack);
 			_drawables.Add("green", listGreen);
@@ -120,11 +120,11 @@ namespace IndependentWork1
 			var v2 = new VisualCurve(new MoveTo(fragmentLast, _bezier.GetPoint(0)));
 			var listBlack = new List<IDrawable>();
 			var listGreen = new List<IDrawable>();
-			v1.Draw(_canva, _drawBlack);
-			v2.Draw(_canva, _drawBlack);
+			v1.Draw(_canva, _drawBlack, false, fragmentFirst.HasFirstPoint, fragmentFirst.HasLastPoint);
+			v2.Draw(_canva, _drawBlack, false, fragmentLast.HasFirstPoint, fragmentLast.HasLastPoint);
 			listBlack.Add(_drawBlack);
-			v1.Draw(_canva, _drawGreen);
-			v2.Draw(_canva, _drawGreen);
+			v1.Draw(_canva, _drawGreen, false, fragmentFirst.HasFirstPoint, fragmentFirst.HasLastPoint);
+			v2.Draw(_canva, _drawGreen, false, fragmentLast.HasFirstPoint, fragmentLast.HasLastPoint);
 			listGreen.Add(_drawGreen);
 		}
 
@@ -141,9 +141,9 @@ namespace IndependentWork1
 			var v1 = new VisualCurve(moving);
 			var listBlack = new List<IDrawable>();
 			var listGreen = new List<IDrawable>();
-			v1.Draw(_canva, _drawBlack);
+			v1.Draw(_canva, _drawBlack, false, moving.HasFirstPoint, moving.HasLastPoint);
 			listBlack.Add(_drawBlack);
-			v1.Draw(_canva, _drawGreen);
+			v1.Draw(_canva, _drawGreen, false, moving.HasFirstPoint, moving.HasLastPoint);
 			listGreen.Add(_drawGreen);
 			_moveFragment = moving;
 		}
@@ -158,9 +158,9 @@ namespace IndependentWork1
 			var v1 = new VisualCurve(moving);
 			var listBlack = new List<IDrawable>();
 			var listGreen = new List<IDrawable>();
-			v1.Draw(_canva, _drawBlack);
+			v1.Draw(_canva, _drawBlack, false, moving.HasFirstPoint, moving.HasLastPoint);
 			listBlack.Add(_drawBlack);
-			v1.Draw(_canva, _drawGreen);
+			v1.Draw(_canva, _drawGreen, false, moving.HasFirstPoint, moving.HasLastPoint);
 			listGreen.Add(_drawGreen);
 		}
 	}

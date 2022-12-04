@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Printing;
+using System.Windows.Controls;
 
 namespace IndependentWork1
 {
@@ -49,7 +51,7 @@ namespace IndependentWork1
 			}
 		}
 
-		public void Draw(ICanvas canvas, IDrawable drawable)
+		public void Draw(ICanvas canvas, IDrawable drawable, bool hasCentralPoint, bool hasStartPoint, bool hasLastPoint)
         {
 			if (drawable is null)
 			{
@@ -66,44 +68,21 @@ namespace IndependentWork1
 			}
 
 			Lines = GetLines(points, canvas);
+			drawable.DrawLine(Lines);
 
-			if (_curve is Fragment fragment)
+			if (hasStartPoint)
 			{
-				drawable.Draw(Lines, fragment.HasFirstPoint, fragment.HasLastPoint);
-			}
-			else
-			{
-				if(_curve is MoveTo move)
-				{
-					drawable.Draw(Lines, move.HasFirstPoint, move.HasLastPoint);
-				}
-				else
-				{
-					drawable.Draw(Lines);
-				}
+				drawable.DrawStartPoint(Lines.FirstOrDefault().X1, Lines.FirstOrDefault().Y1);
 			}
 
-			if (_curve is not Fragment && _curve is not MoveTo)
+			if (hasLastPoint)
 			{
-				_curve.Counter = new LengthCounter();
-				var length = GetValue(1);
+				drawable.DrawEndPoint(Lines.LastOrDefault().X2, Lines.LastOrDefault().Y2);
+			}			
 
-				if (length is null)
-				{
-					return;
-				}
-
-				_curve.Counter = new ParamCounter();
-				var centralParam = GetValue((double)(length / 2));
-
-				if (centralParam is null)
-				{
-					return;
-				}
-
-				var centralPoint = _curve.GetPoint((double)centralParam);
-
-				drawable.DrawCentralPoint(canvas.GetCentralPoint(centralPoint));
+			if (hasCentralPoint)
+			{
+				DrawCentralPoint(canvas, drawable);
 			}
 		}
 
@@ -111,6 +90,29 @@ namespace IndependentWork1
         {
 			return _curve.GetPoint(t);
         }
+
+		private void DrawCentralPoint(ICanvas canvas, IDrawable drawable)
+		{
+			_curve.Counter = new LengthCounter();
+			var length = GetValue(1);
+
+			if (length is null)
+			{
+				return;
+			}
+
+			_curve.Counter = new ParamCounter();
+			var centralParam = GetValue((double)(length / 2));
+
+			if (centralParam is null)
+			{
+				return;
+			}
+
+			var centralPoint = _curve.GetPoint((double)centralParam);
+
+			drawable.DrawCentralPoint(canvas.GetCentralPoint(centralPoint));
+		}
 
 		private List<System.Windows.Shapes.Line> GetLines (IEnumerable<IPoint> points, ICanvas canva)
 		{

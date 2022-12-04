@@ -8,7 +8,9 @@ namespace IndependentWork1
 	{
 		public IEnumerable<Shape> CustomShapes { get; }
 		void Clear(IEnumerable<System.Windows.Shapes.Line> lines, bool hasFirstPoint = true, bool hasLastPoint = true);
-		void Draw(IEnumerable<System.Windows.Shapes.Line> lines, bool hasFirstPoint = true, bool hasLastPoint = true);//, IPoint? onePoint = null);
+		void DrawLine(IEnumerable<System.Windows.Shapes.Line> lines);
+		void DrawStartPoint(double x, double y);
+		void DrawEndPoint(double x, double y);
 
 		void DrawCentralPoint(Ellipse el);
 	}

@@ -11,6 +11,11 @@
 		public MoveTo(ACurve aCurve, IPoint movePoint) : base(aCurve)
 		{
 			_movePoint = movePoint;
+
+			var movingFirstPoint = ACurve.GetPoint(0);
+			_moveX = movingFirstPoint.GetX() - _movePoint.GetX();
+			_moveY = movingFirstPoint.GetY() - _movePoint.GetY();
+
 			HasFirstPoint = true;
 			HasLastPoint = true;
 
@@ -23,13 +28,6 @@
 
 		public override IPoint GetPoint(double t)
 		{
-			if (t == 0)
-			{
-				var movingFirstPoint = ACurve.GetPoint(t);
-				_moveX = movingFirstPoint.GetX() - _movePoint.GetX();
-				_moveY = movingFirstPoint.GetY() - _movePoint.GetY();
-			}
-
 			var movingPoint = ACurve.GetPoint(t);
 			movingPoint.SetX(movingPoint.GetX() - _moveX);
 			movingPoint.SetY(movingPoint.GetY() - _moveY);
