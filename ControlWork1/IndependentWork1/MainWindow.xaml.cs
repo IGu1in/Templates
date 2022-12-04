@@ -30,6 +30,7 @@ namespace IndependentWork1
 		private MoveTo _moveFragment; 
 		private Line _line;
 		private Bezier _bezier;
+		private Composite _composite;
 		private Dictionary<string, List<IDrawable>> _drawables = new Dictionary<string, List<IDrawable>>();
 
 		public MainWindow()
@@ -85,15 +86,23 @@ namespace IndependentWork1
 			p4.SetX(rand.Next(200));
 			p4.SetY(rand.Next(200));
 
+			var p6 = new Point();
+			p6.SetX(rand.Next(200));
+			p6.SetY(rand.Next(200));
+			var p7 = new Point();
+			p7.SetX(rand.Next(200));
+			p7.SetY(rand.Next(200));
+
 			var line = new Line(p1, p2);
 			_line = line;
 			var bez = new Bezier(p1, p2, p3, p4);
 			_bezier = bez;
-			//var visualBezier = new VisualCurve(bez);
-			//var visualLine = new VisualCurve(line);
 			var composite = new Composite();
+			var line2 = new Line(p6, p7);
 			composite.Add(line);
 			composite.Add(bez);
+			composite.Add(line2);
+			_composite = composite;
 			var visualComposite = new VisualCurve(composite);
 			var listBlack = new List<IDrawable>();
 			var listGreen = new List<IDrawable>();
@@ -101,14 +110,6 @@ namespace IndependentWork1
 			listGreen.Add(_drawGreen);
 			visualComposite.Draw(_canva, _drawBlack, true, true, true);
 			listBlack.Add(_drawBlack);
-			//visualBezier.Draw(_canva, _drawBlack, true, true, true);
-			//listBlack.Add(_drawBlack);
-			//visualLine.Draw(_canva, _drawBlack, true, true, true);
-			//listBlack.Add(_drawBlack);
-			//visualBezier.Draw(_canva, _drawGreen, true, true, true);
-			//listGreen.Add(_drawGreen);
-			//visualLine.Draw(_canva, _drawGreen, true, true, true);
-			//listGreen.Add(_drawGreen);
 			_drawables.Add("black", listBlack);
 			_drawables.Add("green", listGreen);
 		}
@@ -157,6 +158,20 @@ namespace IndependentWork1
 		}
 
 		private void ConcatClick(object sender, RoutedEventArgs e)
+		{
+			var fragmentFirst = new Fragment(_bezier, 0.5, 1);
+			var clearCurve1 = new VisualCurve(fragmentFirst);
+			var moving = new MoveTo(fragmentFirst, _moveFragment.GetPoint(1));
+			var v1 = new VisualCurve(moving);
+			var listBlack = new List<IDrawable>();
+			var listGreen = new List<IDrawable>();
+			v1.Draw(_canva, _drawBlack, false, moving.HasFirstPoint, moving.HasLastPoint);
+			listBlack.Add(_drawBlack);
+			v1.Draw(_canva, _drawGreen, false, moving.HasFirstPoint, moving.HasLastPoint);
+			listGreen.Add(_drawGreen);
+		}
+
+		private void CountBazeCurve(object sender, RoutedEventArgs e)
 		{
 			var fragmentFirst = new Fragment(_bezier, 0.5, 1);
 			var clearCurve1 = new VisualCurve(fragmentFirst);

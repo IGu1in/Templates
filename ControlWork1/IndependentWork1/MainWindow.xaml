@@ -15,6 +15,7 @@
 			<RowDefinition Height="508*"></RowDefinition>
 			<RowDefinition Height="123*"></RowDefinition>
 			<RowDefinition Height="153*"/>
+			<RowDefinition Height="153*"/>
 		</Grid.RowDefinitions>
 		<StackPanel Grid.Column="0" Grid.Row="0" Name="sp">
 			<Canvas x:Name="green" Width="380" Height="440" Background="AliceBlue">
@@ -30,5 +31,6 @@
 		<Button Grid.Column="1" x:Name="fragment" Content="Поменять вершины" Click="FragmentClick" Margin="114,10,142,27" Grid.Row="1"/>
 		<Button Grid.Column="0" x:Name="fragmentMove" Content="Сдвинуть фрагмент" Click="MoveFragmentClick" Margin="114,10,142,27" Grid.Row="2"/>
 		<Button Grid.Column="1" x:Name="concatFragment" Content="Соединить фрагменты" Click="ConcatClick" Margin="114,10,142,27" Grid.Row="2"/>
+		<Button Grid.Column="0" x:Name="countCurve" Content="Посчитать" Click="CountBazeCurve" Margin="114,10,142,27" Grid.Row="3"/>
 	</Grid>
 </Window>
