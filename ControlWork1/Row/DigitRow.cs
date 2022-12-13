@@ -17,7 +17,7 @@ namespace Row
 			_digits = new List<Item>();
 		}
 
-		public void Build(int N)
+		public virtual void Build(int N)
 		{
 			_digits.Clear();
 			_digits.Add(_firstItem);
@@ -35,6 +35,16 @@ namespace Row
 			{
 				item.Iterate(i);
 			}
+		}
+
+		public virtual void Add(DigitRow row)
+		{
+
+		}
+
+		public virtual void Remove(DigitRow row)
+		{
+
 		}
 	}
 }
