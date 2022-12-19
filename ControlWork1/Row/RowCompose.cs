@@ -42,7 +42,8 @@ namespace Row
 
 				row.Iterate(r =>
 				{
-					list.Add(int.Parse(r.ToString()));
+					var digit = (Item)r;
+					list.Add(digit.GetValue());
 				});
 
 				listDigits.Add(list);
