@@ -39,12 +39,13 @@ namespace Row
 			foreach (var row in _digitRows)
 			{
 				var list = new List<int>();
+				var listFromRow = row.GetItems();
 
-				row.Iterate(r =>
+				foreach (var item in listFromRow)
 				{
-					var digit = (Item)r;
-					list.Add(digit.GetValue());
-				});
+					list.Add(item.GetValue());
+				}
+				
 
 				listDigits.Add(list);
 			}

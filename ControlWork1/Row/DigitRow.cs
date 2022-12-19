@@ -37,6 +37,18 @@ namespace Row
 			}
 		}
 
+		public List<Item> GetItems()
+		{
+			var value = new List<Item>();
+
+			foreach(var item in _digits)
+			{
+				value.Add(item);
+			}
+
+			return value;
+		}
+
 		public virtual void Add(DigitRow row)
 		{
 
