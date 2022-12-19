@@ -47,5 +47,10 @@ namespace IndependentWork1
 		{
 			throw new NotImplementedException();
 		}
+
+		public virtual void Iterate(Iterator i)
+		{
+			i(this);
+		}
 	}
 }

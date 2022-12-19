@@ -1,6 +1,6 @@
 ﻿namespace IndependentWork1
 {
-	public interface ICurve
+	public interface ICurve : IIterrator
 	{
 		public ICounter Counter { get; set; }
 		IPoint GetPoint(double t);

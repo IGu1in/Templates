@@ -100,5 +100,10 @@ namespace IndependentWork1
 		{
 			return canva.GetLines(points).ToList();
 		}
+
+		public void Iterate(Iterator obj)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

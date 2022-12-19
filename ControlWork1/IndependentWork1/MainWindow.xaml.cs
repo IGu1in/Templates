@@ -175,16 +175,9 @@ namespace IndependentWork1
 
 		private void CountBazeCurve(object sender, RoutedEventArgs e)
 		{
-			ConcreteIterator iterator = _composite.CreateIterator();
 			var count = 0;
 
-			for (var curve = iterator.First(); !iterator.IsCompleted; curve = iterator.Next())
-			{
-				if (curve is Bezier || curve is Line)
-				{
-					count++;
-				}
-			}
+			_composite.Iterate(r => count++);
 
 			MessageBox.Show(count.ToString());
 		}

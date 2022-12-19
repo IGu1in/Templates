@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IndependentWork1
 {
-	public class Composite : ACurve, IAgregate
+	public class Composite : ACurve
 	{
 		private List<ICurve> _curves;
 		private bool isFirstTimeForSecondCurve = true;
@@ -65,11 +65,14 @@ namespace IndependentWork1
 		public override void Remove(ICurve curve)
 		{
 			_curves?.Remove(curve);
-		}
+		}		
 
-		public ConcreteIterator CreateIterator()
+		public override void Iterate(Iterator i)
 		{
-			return new ConcreteIterator(this);
+			foreach (var item in _curves)
+			{
+				item.Iterate(i);
+			}
 		}
 	}
 }
